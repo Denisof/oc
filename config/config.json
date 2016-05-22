@@ -1,3 +1,11 @@
 {
-	"port": 3001
+	"port": 3001,
+	"mongoose":{
+		"uri": "mongodb://localhost/myapp",
+		"options" : {
+			"socketOptions" :{
+				"keepAlive" : 1
+			}
+		}
+	}
 }
