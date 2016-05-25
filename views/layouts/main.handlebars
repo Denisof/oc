@@ -11,23 +11,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Title</title>
 
-<script src="javascripts/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-<link href="javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-<script src="javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<link href="javascripts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="/javascripts/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+<link href="/javascripts/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<script src="/javascripts/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="/javascripts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
-<link href="stylesheets/stylesheet.css" rel="stylesheet">
+<link href="/stylesheets/stylesheet.css" rel="stylesheet">
 
 </head>
 
 <body class="">
+  {{>navtop}}
 <header>
   <div class="container">
     <div class="row">
       <div class="col-sm-4">
         <div id="logo">
           
-          <a href="/"><img src="/" title="" alt="logo" class="img-responsive" /></a>
+          <a href="/"><img src="/images/catalog/logo.png" title="" alt="logo" class="img-responsive" /></a>
           
           
          
@@ -35,11 +36,11 @@
       </div>
       <div class="col-sm-5">{{search}}
       </div>
-      <div class="col-sm-3">{{cart}}</div>
+      <div class="col-sm-3">{{>cart}}</div>
     </div>
   </div>
 </header>
-
+{{>categories}}
 
 {{{body}}}
 

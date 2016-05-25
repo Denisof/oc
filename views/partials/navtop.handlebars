@@ -1,0 +1,28 @@
+<nav id="top">
+  <div class="container">
+  
+    <div id="top-links" class="nav pull-right">
+      <ul class="list-inline">
+        <li><a href="<?php echo $contact; ?>"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md">0504007533</span></li>
+        <li class="dropdown"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md">Accaunt</span> <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            {{#if logged}}
+            <li><a href="/user/accaunt">Accaunt</a></li>
+            <li><a href="/user/orders">Orders</a></li>
+            <li><a href="/user/transactions">Transactions></a></li>
+            <li><a href="/user/downloads">Downloads</a></li>
+            <li><a href="/user/logout">Logout</a></li>
+            {{/if}}
+             {{#unless logged}}
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+           {{/unless}}
+          </ul>
+        </li>
+        
+        <li><a href="/cart" title="Cart"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Cart</span></a></li>
+        <li><a href="/checkout" title="Checkout"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md">Checkout</span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

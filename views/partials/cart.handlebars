@@ -1,0 +1,55 @@
+<div id="cart" class="btn-group btn-block">
+  <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-block btn-lg dropdown-toggle"><i class="fa fa-shopping-cart"></i> <span id="cart-total">You have {{items}}</span></button>
+  <ul class="dropdown-menu pull-right">
+   
+    {{#if cart_products}}
+    <li>
+      <table class="table table-striped">
+        
+        {{#each cart_products}}
+        <tr>
+          <td class="text-center">{{#if this.thumb}}
+            <a href="product/{{this.product_id}}"><img src="{{this.thumb}}" alt="{{this.name}}" title="{{this.name}}" class="img-thumbnail" /></a>
+            {{/if}}</td>
+          <td class="text-left"><a href="product/{{this.product_id}}">{{this.name}}</a>
+            
+            {{#if this.options}}
+            
+            {{#each this.options}}
+            <br />
+            - <small>{{this.name}} {{this.value}}</small>
+            
+            {{/each}}
+            {{/if}}
+           
+          <td class="text-right">x {{this.quantity}}</td>
+          <td class="text-right">{{this.total}}</td>
+          <td class="text-center"><button type="button" onclick="cart.remove('{{this.product_id}}');" title="delete" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></td>
+        </tr>
+        {{/each}}
+      </table>
+    </li>
+    <li>
+      <div>
+        <table class="table table-bordered">
+          
+          {{#each totals}}
+          <tr>
+            <td class="text-right"><strong>{{this.title}}</strong></td>
+            <td class="text-right">{{this.text}}</td>
+          </tr>
+          {{/each}}
+          
+        </table>
+        <p class="text-right"><a href="/cart"><strong><i class="fa fa-shopping-cart"></i> Check cart</strong></a>&nbsp;&nbsp;&nbsp;<a href="/checkout"><strong><i class="fa fa-share"></i> Checkout</strong></a></p>
+      </div>
+    </li>
+    {{/if}}
+    {{#unless cart_products}}
+    <li>
+      <p class="text-center">Your cart is empty</p>
+    </li>
+    {{/unless}}
+  </ul>
+  
+</div>

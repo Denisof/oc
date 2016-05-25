@@ -14,6 +14,7 @@
     "express-handlebars": "^3.0.0",
     "express4-handlebars": "^0.2.0",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "underscore": "^1.8.3"
   }
 }

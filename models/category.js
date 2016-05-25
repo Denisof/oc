@@ -59,9 +59,7 @@ var schema = new Schema ({
 	
 });
 
-schema.methods.findAll = function (){
-	return this.find();
-}
+
 
 exports.Category = mongoose.model('Category',schema); 
 

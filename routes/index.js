@@ -1,25 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var Category = require('../models/category').Category;
+var Product = require('../models/product').Product;
+var Product_description = require('../models/product_description').Product_description;
 var async = require('async');
+var _ = require('underscore');
 
 
-// var categories = {
-// 	title : "Main page",
-// 	categories:[
-// 	{
-// 		href:"/Computers",
-// 		name: "Computers"
-// 	},
-// 	{
-// 		href:"/Phones",
-// 		name: "Phones"
-// 	},{
-// 		href:"/Laptops",
-// 		name: "Laptops"
-// 	}
-// 	]
-// };
 
 
 /* GET home page. */
@@ -38,13 +25,28 @@ router.get('/', function(req, res, next) {
 			});
 
 		},function(err,results){
-			console.log(results['0']);
 			if(err) throw error
 				var data = {
 					title : "Main page",
 					categories : results
 				}
-				 res.render('index', data);
+				Product.find(function(err,results){
+					//console.log(results);
+					async.map(results,function(item,callback){
+						Product_description.find({product_id:item.product_id},function(err,results){
+							if(err) throw err
+								//_.extend(item,results);
+								
+								item['name'] =results.name;
+								callback(err,item);
+						});
+					},function(err,results){
+						console.log(results['0'].name);
+						data.products = results.splice(0,4);
+						//console.log(results);
+						res.render('index', data)
+					});
+				}); 
 		});
 	
 });
@@ -52,3 +54,5 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+//res.render('index', data);

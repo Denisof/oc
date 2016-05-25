@@ -8,6 +8,7 @@ var http = require('http');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var category = require('./routes/category');
 
 var app = express();
 
@@ -28,13 +29,6 @@ http.createServer(app).listen(app.get('port'),function (){
 
 
 
-
-
-
-
-
-
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -45,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/category', category);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

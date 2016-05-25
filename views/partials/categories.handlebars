@@ -1,0 +1,39 @@
+{{#if categories}}
+<div class="container">
+  <nav id="menu" class="navbar">
+    <div class="navbar-header"><span id="category" class="visible-xs"></span>
+      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        
+        {{#each categories}}
+        {{#if this.children}}
+          <li class="dropdown"><a href="/category/{{this.category_id}}" class="dropdown-toggle" data-toggle="dropdown">{{this.name}}</a>
+            <div class="dropdown-menu">
+              <div class="dropdown-inner">
+                
+                <ul class="list-unstyled">
+                  {{#each this.children}}
+                 
+                  <li><a href="/category/{{this.category_id}}">{{this.name}}</a></li>
+                  <?php } ?>
+                  {{/each}}
+                </ul>
+               
+              </div>
+              <a href="/category/{{this.category_id}}" class="see-all">See all {{this.name}}</a> </div>
+          </li>
+        
+          {{else}}
+
+
+        <li><a href="/category/{{this.category_id}}">{{this.name}}</a></li>
+        {{/if}}
+        {{/each}}
+        
+      </ul>
+    </div>
+  </nav>
+</div>
+{{/if}}
