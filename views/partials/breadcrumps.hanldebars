@@ -1,0 +1,7 @@
+{{#if breadcrumps}}
+  <ul class="breadcrumb">
+    {{#each breadcrumps}}
+    <li><a href=""></a></li>
+    {{/each}}
+  </ul>
+{{/if}}

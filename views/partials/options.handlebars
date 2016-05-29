@@ -1,0 +1,153 @@
+
+            {{#if_eq this.type 'select'}}
+            <div class="form-group {{#if this.required}}  required {{/if}} ">
+              <label class="control-label" for="input-option{{this.product_option_id}}>">{{this.name}}</label>
+              <select name="option[{{this.product_option_id}}]" id="input-option{{this.product_option_id}}" class="form-control">
+                <option value="">--Please Select--</option>
+               
+                {{#each this.product_option_value}}
+                <option value="{{this.product_option_value_id}}">{{this.name}}
+                
+                {{#if this.price}}
+                ({{this.price_prefix}}{{this.price}})
+                {{/if}}
+                </option>
+                
+                {{/each}}
+              </select>
+            </div>
+            {{/if_eq}}
+
+            {{#if_eq this.type 'radio'}}
+              <div class="form-group {{#if this.required}}  required {{/if}} ">
+                <label class="control-label">{{this.name}}</label>
+                <div id="input-option{{this.product_option_id}}">
+                  
+                  {{#each this.product_option_value}}
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="option[{{this.product_option_id}}]" value="{{this.product_option_value_id}}" />
+                      {{this.name}}
+                      {{#if this.price}}
+                        ({{this.price_prefix}}{{this.price}})
+                      {{/if}}
+                    </label>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            {{/if_eq}}
+
+            {{#if_eq this.type 'checkbox'}}
+            <div class="form-group{{#if this.required}}  required {{/if}}">
+              <label class="control-label">{{this.name}}</label>
+              <div id="input-option{{this.product_option_id}}">
+                
+                {{#each this.product_option_value}}
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="option[{{this.product_option_id}}][]" value="{{this.product_option_value_id}}" />
+                    {{this.name}}
+                      {{#if this.price}}
+                        ({{this.price_prefix}}{{this.price}})
+                    {{/if}}
+                  </label>
+                </div>
+                {{/each}}
+                
+              </div>
+            </div>
+            {{/if_eq}}
+
+            {{#if_eq this.type 'image'}}
+            
+            <div class="form-group{{#if this.required}}  required {{/if}}">
+              <label class="control-label">{{this.name}}</label>
+              <div id="input-option{{this.product_option_id}}">
+               
+                {{#each this.product_option_value}}
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="option[{{this.product_option_id}}]" value="{{this.product_option_value_id}}" />
+                    <img src="{{this.image}}" alt="{{this.name}}
+                      {{#if this.price}}
+                        ({{this.price_prefix}}{{this.price}})
+                    {{/if}}" class="img-thumbnail" /> {{this.name}}
+                    {{this.name}}
+                      {{#if this.price}}
+                        ({{this.price_prefix}}{{this.price}}$)
+                    {{/if}}
+                  </label>
+                </div>
+                
+                 {{/each}}
+              </div>
+            </div>
+            {{/if_eq}}
+
+            {{#if_eq this.type 'text'}}
+           
+            <div class="form-group{{#if this.required}}  required {{/if}}">
+              <label class="control-label" for="input-option{{this.product_option_id}}">{{this.name}}</label>
+              <input type="text" name="option[{{this.product_option_id}}]" value="{{this.value}}" placeholder="{{this.name}}" id="input-option{{this.product_option_id}}" class="form-control" />
+            </div>
+            
+            {{/if_eq}}
+
+            {{#if_eq this.type 'textarea'}}
+            
+            <div class="form-group{{#if this.required}}  required {{/if}}">
+              <label class="control-label" for="input-option{{this.product_option_id}}">{{this.name}}</label>
+              <textarea name="option[{{this.product_option_id}}]" rows="5" placeholder="{{this.name}}" id="input-option{{this.product_option_id}}" class="form-control">{{this.value}}</textarea>
+            </div>
+            
+            {{/if_eq}}
+
+            {{#if_eq this.type 'file'}}
+            
+            <div class="form-group{{#if this.required}}  required {{/if}}">
+              <label class="control-label">{{this.name}}</label>
+              <button type="button" id="button-upload{{this.product_option_id}}" data-loading-text="Loading..." class="btn btn-default btn-block"><i class="fa fa-upload"></i> Upload</button>
+              <input type="hidden" name="option[{{this.product_option_id}}]" value="" id="input-option{{this.product_option_id}}" />
+            </div>
+            
+            {{/if_eq}}
+
+            {{#if_eq this.type 'date'}}
+            
+            <div class="form-group{{#if this.required}}  required {{/if}}">
+              <label class="control-label" for="input-option{{this.product_option_id}}">{{this.name}}</label>
+              <div class="input-group date">
+                <input type="text" name="option[{{this.product_option_id}}]" value="{{this.value}}" data-date-format="YYYY-MM-DD" id="input-option{{this.product_option_id}}" class="form-control" />
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                </span></div>
+            </div>
+            
+            {{/if_eq}}
+
+            {{#if_eq this.type 'datetime'}}
+            
+            <div class="form-group{{#if this.required}}  required {{/if}}">
+              <label class="control-label" for="input-option{{this.product_option_id}}">{{this.name}}</label>
+              <div class="input-group datetime">
+                <input type="text" name="option[{{this.product_option_id}}]" value="{{this.value}}" data-date-format="YYYY-MM-DD HH:mm" id="input-option{{this.product_option_id}}" class="form-control" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                </span></div>
+            </div>
+           
+            {{/if_eq}}
+
+            {{#if_eq this.type 'time'}}
+            
+            <div class="form-group{{#if this.required}}  required {{/if}}">
+              <label class="control-label" for="input-option{{this.product_option_id}}">{{this.name}}</label>
+              <div class="input-group time">
+                <input type="text" name="option[{{this.product_option_id}}]" value="{{this.value}}" data-date-format="HH:mm" id="input-option{{this.product_option_id}}" class="form-control" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                </span></div>
+            </div>
+            
+            {{/if_eq}}

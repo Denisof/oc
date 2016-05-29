@@ -31,19 +31,15 @@ router.get('/', function(req, res, next) {
 					categories : results
 				}
 				Product.find(function(err,results){
-					//console.log(results);
+					results = results.splice(0,4);
 					async.map(results,function(item,callback){
-						Product_description.find({product_id:item.product_id},function(err,results){
+						Product_description.findOne({product_id:item.product_id},function(err,results){
 							if(err) throw err
-								//_.extend(item,results);
-								
 								item['name'] =results.name;
 								callback(err,item);
 						});
 					},function(err,results){
-						console.log(results['0'].name);
 						data.products = results.splice(0,4);
-						//console.log(results);
 						res.render('index', data)
 					});
 				}); 

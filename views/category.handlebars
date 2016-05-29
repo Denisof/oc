@@ -1,30 +1,11 @@
-<div class="container">
+<div class="container" style="
+    min-height: 700px;
+">
   {{#if products}}
 <div class="row">
         
   {{#each products}}
-          <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="product-thumb transition">
-              <div class="image"><a href="/product/{{this.product_id}}"><img src="/images/{{this.image}}" alt="{{this.name}}" title="{{this.name}}" class="img-responsive" width="200px" height="400px" /></a></div>
-              <div class="caption">
-                <h4><a href="/product/{{this.product_id}}">{{this.name}}</a></h4>
-                
-                {{# if this.price}}       
-                
-                <p class="price">
-                 
-                 {{this.price}}$
-                  
-                </p>
-                
-                {{/if}}
-              </div>
-              <div class="button-group">
-                <button type="button" onclick="cart.add('{{this.id}}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Add cart</span></button>
-               
-              </div>
-            </div>
-          </div>
+          {{>product}}
   {{/each}}
   </div>
   {{/if}}

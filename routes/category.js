@@ -12,14 +12,12 @@ var data = {};
 router.get('/:id',function(req, res, next){
 	Category.find({parent_id : 0},function(err,results){
 	if(err) throw err
-		console.log('I am called');
 		async.map(results,function(item,callback){
 
 			Category.find({parent_id : item.category_id},function(err,results){
 				
 				if(err) throw err
 				item['children'] = results;
-				//console.log(item['children'] );
 				callback(err,item);
 			});
 
@@ -34,26 +32,53 @@ router.get('/:id',function(req, res, next){
 });
 
 
+// router.get('/:id',function(req, res, next){
+// 		Product_category.find({category_id:req.params.id},function (err,results){
+			
+// 			async.map(results,function(item,callback){
+// 						Product.find({product_id:item.product_id},function(err,results){
+// 							if(err) throw err
+								
+// 								callback(err,item);
+// 						});
+// 					},function(err,results){
+// 						//console.log(results['0'].name);
+						
+// 							data.products = results
+						
+
+// 						console.log(data);
+// 						res.render('category', data);
+// 					});
+// 		});
+
+// });
 router.get('/:id',function(req, res, next){
-	console.log(req.params.id);
 		Product_category.find({category_id:req.params.id},function (err,results){
 			
 			async.map(results,function(item,callback){
-						Product.find({product_id:item.product_id},function(err,results){
+						Product.findOne({product_id:item.product_id},function(err,product){
 							if(err) throw err
-						
-								callback(err,item);
+										
+										Product_description.findOne({product_id:item.product_id},function(err,results){
+											if(results != undefined){
+												console.log(results.name );
+											product.name = results.name;
+											}
+											
+										
+										
+										callback(err,product);
+									});	
 						});
 					},function(err,results){
-						//console.log(results['0'].name);
+						//console.log(results);
 						
-							data.products = results
-						
-
-						//console.log(data);
+							data.products = results;
 						res.render('category', data);
 					});
 		});
 
 });
+
 module.exports = router;
