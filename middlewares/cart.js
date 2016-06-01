@@ -15,11 +15,12 @@ function setCart(req, res, next){
 	
 	function Cart(){
 		if(req.session.cart == undefined ){
+				console.log('ddd');
 					req.session.cart = {};
 					req.session.cart.items = [];
 					req.session.cart.total = 0;
 			}
-		
+		console.log(req.session);
 		function compareOptions (cartElement,product){
 			
 			return _.every(cartElement.options,function (element){
@@ -151,7 +152,7 @@ function setCart(req, res, next){
 			return req.session.cart;
 		}
 		this.clearCart = function(){
-			req.session.cart = '';
+			delete(req.session.cart);
 		}
 		
 	}
