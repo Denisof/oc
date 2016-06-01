@@ -1,0 +1,11 @@
+
+{{#unless breadcrumps}}
+<div class='container'>
+  <ul class="breadcrumb">
+  Breadcrumps
+    {{#each breadcrumps}}
+    <li><a href="{{this.href}}">{{this.name}}</a></li>
+    {{/each}}
+  </ul>
+</div>
+{{/unless}}
